@@ -34,7 +34,7 @@ build/
 ### VS Code ###
 .vscode/
 
-### .idea ###
+### IntelliJ IDEA ###
 .idea/
 
 ### Mac OS ###
