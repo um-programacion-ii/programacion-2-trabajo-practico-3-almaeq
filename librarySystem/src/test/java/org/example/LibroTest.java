@@ -2,9 +2,10 @@ package org.example;
 
 import org.example.enums.EstadoLibro;
 import org.example.modelos.Libro;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static junit.framework.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 
 public class LibroTest {
     @Test
