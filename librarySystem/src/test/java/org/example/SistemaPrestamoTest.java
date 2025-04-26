@@ -37,15 +37,16 @@ class SistemaPrestamoTest {
         when(catalogoMock.buscarPorISBN("111")).thenReturn(libroDisponible);
 
         // Act
-        boolean resultado = sistemaPrestamo.prestarLibro("111");
+        Prestamo resultado = sistemaPrestamo.prestarLibro("111");
 
         // Assert
-        assertTrue(resultado);
-        assertEquals(EstadoLibro.PRESTADO, libroDisponible.getEstado());
+        assertNotNull(resultado); // Ahora verificamos que el préstamo exista
+        assertEquals("Renegados", resultado.getLibro().getTitulo());
+        assertEquals(EstadoLibro.PRESTADO, resultado.getLibro().getEstado());
 
-        Prestamo prestamo = sistemaPrestamo.buscarPrestamoPorISBN("111");
-        assertNotNull(prestamo);
-        assertEquals("Renegados", prestamo.getLibro().getTitulo());
+        Prestamo prestamoBuscado = sistemaPrestamo.buscarPrestamoPorISBN("111");
+        assertNotNull(prestamoBuscado);
+        assertEquals("Renegados", prestamoBuscado.getLibro().getTitulo());
 
         verify(catalogoMock, times(1)).buscarPorISBN("111");
     }

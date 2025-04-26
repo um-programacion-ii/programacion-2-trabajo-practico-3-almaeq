@@ -18,7 +18,7 @@ public class SistemaPrestamo {
         this.catalogo = catalogo;
     }
 
-    public boolean prestarLibro(String isbn) {
+    public Prestamo prestarLibro(String isbn) {
         Libro libro = catalogo.buscarPorISBN(isbn);
         if (libro == null) {
             throw new IllegalArgumentException("El libro con ISBN " + isbn + " no existe.");
@@ -30,7 +30,7 @@ public class SistemaPrestamo {
         libro.setEstado(EstadoLibro.PRESTADO);
         Prestamo prestamo = new Prestamo(libro);
         prestamos.add(prestamo);
-        return true;
+        return prestamo;
     }
 
     // Obtener todos los préstamos
