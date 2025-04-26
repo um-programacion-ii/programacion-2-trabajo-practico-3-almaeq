@@ -136,10 +136,23 @@ Frameworks usados:
 
 Resultado de la ejecución de los tests: 
 
+#### Tests de Catálogo
+
 ![Evidencia de tests de Catálogo exitosos](evidencias/testCatalogo.png)
+
+#### Tests de Libro
+.
 ![Evidencia de tests de Libro exitosos](evidencias/testLibro.png)
+
+#### Tests de Sistema Préstamo
+
 ![Evidencia de tests de Sistema de Préstamos exitosos](evidencias/testSistemaPrestamo.png)
+
+#### Tests de Gestión de Usuario
+
 ![Evidencia de tests Gestión de Usuario exitosos](evidencias/testUsuario.png)
+
+---
 
 ## Importante
 - La rama `main` está protegida y no se pueden hacer commits directos sobre ella
