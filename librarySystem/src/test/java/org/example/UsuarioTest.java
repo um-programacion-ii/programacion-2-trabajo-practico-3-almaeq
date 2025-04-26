@@ -17,7 +17,7 @@ import org.mockito.MockitoAnnotations;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
-class UsuarioGestionUsuarioTest {
+class UsuarioTest {
 
     @Mock
     private Catalogo catalogo;
