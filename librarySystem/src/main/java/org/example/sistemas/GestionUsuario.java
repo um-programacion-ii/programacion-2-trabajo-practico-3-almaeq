@@ -1,5 +1,6 @@
 package org.example.sistemas;
 
+import org.example.exceptions.UsuarioNoEncontradoException;
 import org.example.modelos.Prestamo;
 import org.example.modelos.Usuario;
 
@@ -30,11 +31,16 @@ public class GestionUsuario {
 
     // Registrar un préstamo para un usuario
     public boolean registrarPrestamo(String nombreUsuario, Prestamo prestamo) {
-        Usuario usuario = buscarUsuario(nombreUsuario);
-        if (usuario != null) {
-            usuario.agregarPrestamo(prestamo);
-            return true;
+        if (nombreUsuario == null || prestamo == null) {
+            throw new IllegalArgumentException("Nombre de usuario o préstamo no pueden ser nulos.");
         }
-        return false; // No se encontró el usuario
+
+        Usuario usuario = buscarUsuario(nombreUsuario);
+        if (usuario == null) {
+            throw new UsuarioNoEncontradoException("Usuario no encontrado: " + nombreUsuario);
+        }
+
+        usuario.agregarPrestamo(prestamo);
+        return true;
     }
 }
