@@ -1,6 +1,7 @@
 package org.example.sistemas;
 
 import org.example.enums.EstadoLibro;
+import org.example.exceptions.LibroNoDisponibleException;
 import org.example.modelos.Catalogo;
 import org.example.modelos.Libro;
 import org.example.modelos.Prestamo;
@@ -19,13 +20,17 @@ public class SistemaPrestamo {
 
     public boolean prestarLibro(String isbn) {
         Libro libro = catalogo.buscarPorISBN(isbn);
-        if (libro != null && libro.getEstado() == EstadoLibro.DISPONIBLE) {
-            libro.setEstado(EstadoLibro.PRESTADO);
-            Prestamo prestamo = new Prestamo(libro);
-            prestamos.add(prestamo);
-            return true;
+        if (libro == null) {
+            throw new IllegalArgumentException("El libro con ISBN " + isbn + " no existe.");
         }
-        return false;
+        if (libro.getEstado() != EstadoLibro.DISPONIBLE) {
+            throw new LibroNoDisponibleException("El libro no está disponible para préstamo.");
+        }
+
+        libro.setEstado(EstadoLibro.PRESTADO);
+        Prestamo prestamo = new Prestamo(libro);
+        prestamos.add(prestamo);
+        return true;
     }
 
     // Obtener todos los préstamos
