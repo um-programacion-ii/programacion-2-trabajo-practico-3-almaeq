@@ -6,12 +6,14 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+class LibroTest {
 
-public class LibroTest {
     @Test
-    public void testCrearLibroValido() {
+    void testCrearLibroValido() {
+        // Arrange
         Libro libro = new Libro("978-3-16-148410-0", "Hunger Games", "Suzanne Collins");
 
+        // Assert
         assertEquals("978-3-16-148410-0", libro.getISBN());
         assertEquals("Hunger Games", libro.getTitulo());
         assertEquals("Suzanne Collins", libro.getAutor());
@@ -19,9 +21,11 @@ public class LibroTest {
     }
 
     @Test
-    public void testCambioEstadoLibro() {
+    void testCambioEstadoLibro() {
+        // Arrange
         Libro libro = new Libro("123-4-56-789101-1", "Heartless", "Marissa Meyer");
 
+        // Act & Assert
         libro.setEstado(EstadoLibro.PRESTADO);
         assertEquals(EstadoLibro.PRESTADO, libro.getEstado());
 
