@@ -17,16 +17,15 @@ public class SistemaPrestamo {
         this.catalogo = catalogo;
     }
 
-    // Registrar un préstamo por ISBN
-    public boolean registrarPrestamo(String isbn) {
+    public boolean prestarLibro(String isbn) {
         Libro libro = catalogo.buscarPorISBN(isbn);
         if (libro != null && libro.getEstado() == EstadoLibro.DISPONIBLE) {
-            libro.setEstado(EstadoLibro.PRESTADO); // Cambiar estado a PRESTADO
+            libro.setEstado(EstadoLibro.PRESTADO);
             Prestamo prestamo = new Prestamo(libro);
             prestamos.add(prestamo);
-            return true; // Préstamo exitoso
+            return true;
         }
-        return false; // Libro no encontrado o ya prestado
+        return false;
     }
 
     // Obtener todos los préstamos

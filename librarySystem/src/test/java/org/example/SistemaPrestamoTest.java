@@ -34,7 +34,7 @@ class SistemaPrestamosTest {
 
         when(catalogoMock.buscarPorISBN("111")).thenReturn(libroDisponible);
 
-        boolean resultado = sistemaPrestamo.registrarPrestamo("111");
+        boolean resultado = sistemaPrestamo.prestarLibro("111");
 
         assertTrue(resultado);
         assertEquals(EstadoLibro.PRESTADO, libroDisponible.getEstado());
@@ -50,7 +50,7 @@ class SistemaPrestamosTest {
     void testRegistrarPrestamoLibroInexistente() {
         when(catalogoMock.buscarPorISBN("999")).thenReturn(null);
 
-        boolean resultado = sistemaPrestamo.registrarPrestamo("999");
+        boolean resultado = sistemaPrestamo.prestarLibro("999");
 
         assertFalse(resultado);
 
@@ -67,7 +67,7 @@ class SistemaPrestamosTest {
 
         when(catalogoMock.buscarPorISBN("222")).thenReturn(libroPrestado);
 
-        boolean resultado = sistemaPrestamo.registrarPrestamo("222");
+        boolean resultado = sistemaPrestamo.prestarLibro("222");
 
         assertFalse(resultado);
 
